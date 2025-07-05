@@ -21,9 +21,10 @@ lint:
 test:
 	uv run pytest -m 'not online'
 
+# TODO: testcontainers
 integr:
 	docker compose -f docker-compose.firebird.yml up -d
-	poetry run pytest
+	uv run pytest
 	docker compose -f docker-compose.firebird.yml down
 
 docs:

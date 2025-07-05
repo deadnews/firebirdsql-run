@@ -2,10 +2,10 @@
 
 services:
   firebird:
-    image: jacobalberty/firebird:v5.0.0@sha256:a9d407892a9efa005f6456c0bb6daccabe73f747707663249ea6d061c5defe66
+    image: firebirdsql/firebird:5.0.2@sha256:48f5584705efc240db12f7d9eb5d83b9e7ac500675df1c600d130c47e1f3c3ed
     ports:
       - 127.0.0.1:3050:3050/tcp
     environment:
-      FIREBIRD_DATABASE: tests_database.fdb
-      FIREBIRD_USER: tests_user
-      FIREBIRD_PASSWORD: tests_password
+      FIREBIRD_DATABASE: testdb.fdb
+      FIREBIRD_USER: testuser
+      FIREBIRD_PASSWORD: testpass

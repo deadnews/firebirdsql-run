@@ -7,7 +7,7 @@ authors         = [{ name = "DeadNews", email = "deadnewsgit@gmail.com" }]
 classifiers     = ["Operating System :: OS Independent", "Topic :: Database"]
 keywords        = ["firebird", "sql", "api"]
 dynamic         = ["version"]
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 
 dependencies = ["firebirdsql==1.4.0", "passlib==1.7.4"]
 
