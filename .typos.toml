@@ -3,7 +3,7 @@ extend-exclude = ["CHANGELOG.md"]
 
 [default]
 extend-ignore-re = [
-    "[a-zA-Z]{0,3}", # ignore short words
+  "[a-zA-Z]{0,3}", # Ignore short words
 ]
 
 [default.extend-words]

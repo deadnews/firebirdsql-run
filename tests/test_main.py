@@ -18,7 +18,7 @@ def test_db() -> Path:
     return Path("/firebird/data/tests_database.fdb")
 
 
-@pytest.mark.dbonline
+@pytest.mark.online
 def test_connection(test_db: Path):
     """Test the connection function."""
     # Define test parameters
@@ -46,7 +46,7 @@ def test_connection(test_db: Path):
     assert conn.isolation_level == access.value
 
 
-@pytest.mark.dbonline
+@pytest.mark.online
 def test_execute(test_db: Path):
     """Test execute function."""
     # Define test parameters
@@ -82,7 +82,7 @@ def test_execute(test_db: Path):
     assert len(result.data) > 0
 
 
-@pytest.mark.dbonline
+@pytest.mark.online
 def test_execute_with_existing_connection(test_db: Path):
     """Test execute function with an existing connection."""
     # Define test parameters

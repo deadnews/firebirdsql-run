@@ -1,26 +1,27 @@
-.PHONY: all clean default install lock update checks pc test docs run
+.PHONY: all clean default install lock update check pc test integr docs run
 
-default: checks
+default: check
 
 install:
 	pre-commit install
-	poetry install --sync
-
+	uv sync
 lock:
-	poetry lock --no-update
-
+	uv lock
 update:
-	poetry up --latest
+	uv sync --upgrade
 
-checks: pc install lint test
+check: pc install lint test
 pc:
 	pre-commit run -a
 lint:
-	poetry run poe lint
+	uv run ruff check .
+	uv run ruff format .
+	uv run mypy .
+	uv run pyright .
 test:
-	poetry run pytest -m 'not dbonline'
+	uv run pytest -m 'not online'
 
-test-integration:
+integr:
 	docker compose -f docker-compose.firebird.yml up -d
 	poetry run pytest
 	docker compose -f docker-compose.firebird.yml down
@@ -28,17 +29,18 @@ test-integration:
 docs:
 	poetry run mkdocs serve
 
+doc:
+	uv run mkdocs serve
+
 bumped:
 	git cliff --bumped-version
 
-# make release-tag_name
-# make release-$(git cliff --bumped-version)-alpha.0
-release-%: checks
-	git cliff -o CHANGELOG.md --tag $*
+# make release TAG=$(git cliff --bumped-version)-alpha.0
+release: check
+	git cliff -o CHANGELOG.md --tag $(TAG)
 	pre-commit run --files CHANGELOG.md || pre-commit run --files CHANGELOG.md
 	git add CHANGELOG.md
-	git commit -m "chore(release): prepare for $*"
+	git commit -m "chore(release): prepare for $(TAG)"
 	git push
-	git tag -a $* -m "chore(release): $*"
-	git push origin $*
-	git tag --verify $*
+	git tag -a $(TAG) -m "chore(release): $(TAG)"
+	git push origin $(TAG)
