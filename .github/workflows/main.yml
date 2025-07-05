@@ -58,10 +58,10 @@ jobs:
         run: uv sync --frozen
 
       - name: Run tests
-        run: make test
+        run: uv run pytest
 
       - name: Upload coverage to Codecov
-        if: matrix.os == 'ubuntu-latest' && matrix.firebird-version == 'v5' && matrix.python-version == '3.13'
+        if: matrix.os == 'ubuntu-latest' && matrix.firebird-version == '5' && matrix.python-version == '3.13'
         uses: codecov/codecov-action@18283e04ce6e62d37312384ff67231eb8fd56d24 # v5.4.3
 
   pypi-deploy:
