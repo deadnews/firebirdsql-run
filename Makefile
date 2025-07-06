@@ -27,9 +27,6 @@ integr:
 	uv run pytest
 	docker compose -f docker-compose.firebird.yml down
 
-docs:
-	poetry run mkdocs serve
-
 doc:
 	uv run mkdocs serve
 

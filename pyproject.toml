@@ -3,13 +3,13 @@ name            = "firebirdsql-run"
 description     = "Firebirdsql wrapper inspired by subprocess.run"
 readme          = "README.md"
 license         = "MIT"
-authors         = [{ name = "DeadNews", email = "deadnewsgit@gmail.com" }]
+authors         = [{ name = "deadnews", email = "deadnewsgit@gmail.com" }]
 classifiers     = ["Operating System :: OS Independent", "Topic :: Database"]
 keywords        = ["firebird", "sql", "api"]
 dynamic         = ["version"]
 requires-python = ">=3.12"
 
-dependencies = ["firebirdsql==1.4.0", "passlib==1.7.4"]
+dependencies = ["firebirdsql==1.4.0", "passlib>=1.7.4"]
 
 [dependency-groups]
 dev = [
@@ -40,9 +40,8 @@ build-backend = "hatchling.build"
 source = "uv-dynamic-versioning"
 
 [tool.uv-dynamic-versioning]
-enable = true
-vcs    = "git"
-style  = "semver"
+vcs   = "git"
+style = "semver"
 
 [tool.ruff]
 line-length        = 99
