@@ -6,7 +6,7 @@ header = """
 # Changelog\n
 """
 postprocessors = [
-  { pattern = '<REPO>', replace = "https://github.com/DeadNews/firebirdsql-run" },
+  { pattern = '<REPO>', replace = "https://github.com/deadnews/firebirdsql-run" },
 ]
 body = """
 {%- macro remote_url() -%}

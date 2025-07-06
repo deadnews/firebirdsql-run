@@ -15,16 +15,16 @@ from firebirdsql_run import (
 
 @pytest.fixture
 def test_db() -> Path:
-    return Path("/firebird/data/tests_database.fdb")
+    return Path("/var/lib/firebird/data/testdb.fdb")
 
 
-@pytest.mark.dbonline
+@pytest.mark.online
 def test_connection(test_db: Path):
     """Test the connection function."""
     # Define test parameters
     host = "localhost"
     port = 3050
-    user = "tests_user"
+    user = "testuser"
     access = DBAccess.READ_ONLY
 
     # Create a connection object
@@ -33,7 +33,7 @@ def test_connection(test_db: Path):
         port=port,
         db=test_db,
         user=user,
-        passwd="tests_password",
+        passwd="testpass",
         access=access,
     )
 
@@ -46,14 +46,14 @@ def test_connection(test_db: Path):
     assert conn.isolation_level == access.value
 
 
-@pytest.mark.dbonline
+@pytest.mark.online
 def test_execute(test_db: Path):
     """Test execute function."""
     # Define test parameters
     query = "SELECT * FROM rdb$database;"
     host = "localhost"
     port = 3050
-    user = "tests_user"
+    user = "testuser"
     access = DBAccess.READ_ONLY
 
     # Execute a query
@@ -63,7 +63,7 @@ def test_execute(test_db: Path):
         port=port,
         db=test_db,
         user=user,
-        passwd="tests_password",
+        passwd="testpass",
         access=access,
     )
 
@@ -82,14 +82,14 @@ def test_execute(test_db: Path):
     assert len(result.data) > 0
 
 
-@pytest.mark.dbonline
+@pytest.mark.online
 def test_execute_with_existing_connection(test_db: Path):
     """Test execute function with an existing connection."""
     # Define test parameters
     query = "SELECT * FROM rdb$database;"
     host = "localhost"
     port = 3050
-    user = "tests_user"
+    user = "testuser"
     access = DBAccess.READ_ONLY
 
     # Create a connection object
@@ -98,7 +98,7 @@ def test_execute_with_existing_connection(test_db: Path):
         db=test_db,
         port=port,
         user=user,
-        passwd="tests_password",
+        passwd="testpass",
         access=access,
     )
     # Execute a query using the existing connection
