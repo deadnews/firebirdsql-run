@@ -9,7 +9,7 @@ keywords        = ["firebird", "sql", "api"]
 dynamic         = ["version"]
 requires-python = ">=3.12"
 
-dependencies = ["firebirdsql==1.4.0", "passlib>=1.7.4"]
+dependencies = ["firebirdsql==1.4.1", "passlib>=1.7.4"]
 
 [dependency-groups]
 dev = [
