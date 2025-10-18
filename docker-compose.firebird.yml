@@ -2,7 +2,7 @@
 
 services:
   firebird:
-    image: firebirdsql/firebird:5.0.3@sha256:2f2813e839f80bb61b26e542234c659228ba76bbfaf15efe81e39f4e7f7e9dac
+    image: firebirdsql/firebird:5.0.3@sha256:fae04214a2882b23cddc78310ef213a6a0d2b386ade858e1a2840057437ae71b
     ports:
       - 127.0.0.1:3050:3050/tcp
     environment:
