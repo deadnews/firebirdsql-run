@@ -1,5 +1,3 @@
-from pathlib import Path
-
 import pytest
 
 from firebirdsql_run import (
@@ -11,68 +9,54 @@ from firebirdsql_run import (
     execute,
     make_query,
 )
+from tests.conftest import FirebirdConfig
 
 
-@pytest.fixture
-def test_db() -> Path:
-    return Path("/var/lib/firebird/data/testdb.fdb")
-
-
-@pytest.mark.online
-def test_connection(test_db: Path):
+@pytest.mark.integr
+def test_connection(firebird_container: FirebirdConfig):
     """Test the connection function."""
-    # Define test parameters
-    host = "localhost"
-    port = 3050
-    user = "testuser"
+    cfg = firebird_container
     access = DBAccess.READ_ONLY
 
-    # Create a connection object
     conn = connection(
-        host=host,
-        port=port,
-        db=test_db,
-        user=user,
-        passwd="testpass",
+        host=cfg.host,
+        port=cfg.port,
+        db=cfg.db,
+        user=cfg.user,
+        passwd=cfg.passwd,
         access=access,
     )
 
-    # Assert the result
     assert isinstance(conn, Connection)
-    assert conn.filename == f"{test_db}"
-    assert conn.hostname == host
-    assert conn.port == port
-    assert conn.user == user
+    assert conn.filename == f"{cfg.db}"
+    assert conn.hostname == cfg.host
+    assert conn.port == cfg.port
+    assert conn.user == cfg.user
     assert conn.isolation_level == access.value
 
 
-@pytest.mark.online
-def test_execute(test_db: Path):
+@pytest.mark.integr
+def test_execute(firebird_container: FirebirdConfig):
     """Test execute function."""
-    # Define test parameters
+    cfg = firebird_container
     query = "SELECT * FROM rdb$database;"
-    host = "localhost"
-    port = 3050
-    user = "testuser"
     access = DBAccess.READ_ONLY
 
-    # Execute a query
     result = execute(
         query=query,
-        host=host,
-        port=port,
-        db=test_db,
-        user=user,
-        passwd="testpass",
+        host=cfg.host,
+        port=cfg.port,
+        db=cfg.db,
+        user=cfg.user,
+        passwd=cfg.passwd,
         access=access,
     )
 
-    # Assert the result
     assert isinstance(result, CompletedTransaction)
-    assert result.host == host
-    assert result.db == f"{test_db}"
-    assert result.port == port
-    assert result.user == user
+    assert result.host == cfg.host
+    assert result.db == f"{cfg.db}"
+    assert result.port == cfg.port
+    assert result.user == cfg.user
     assert result.access == access.name
     assert result.returncode == 0
     assert result.exception == ""
@@ -82,42 +66,35 @@ def test_execute(test_db: Path):
     assert len(result.data) > 0
 
 
-@pytest.mark.online
-def test_execute_with_existing_connection(test_db: Path):
+@pytest.mark.integr
+def test_execute_with_existing_connection(firebird_container: FirebirdConfig):
     """Test execute function with an existing connection."""
-    # Define test parameters
+    cfg = firebird_container
     query = "SELECT * FROM rdb$database;"
-    host = "localhost"
-    port = 3050
-    user = "testuser"
     access = DBAccess.READ_ONLY
 
-    # Create a connection object
     conn = connection(
-        host=host,
-        db=test_db,
-        port=port,
-        user=user,
-        passwd="testpass",
+        host=cfg.host,
+        db=cfg.db,
+        port=cfg.port,
+        user=cfg.user,
+        passwd=cfg.passwd,
         access=access,
     )
-    # Execute a query using the existing connection
     result = execute(query=query, use_conn=conn)
-    # Close the connection
     conn.close()
 
-    # Assert the result
     assert isinstance(conn, Connection)
-    assert conn.filename == f"{test_db}"
-    assert conn.hostname == host
-    assert conn.port == port
-    assert conn.user == user
+    assert conn.filename == f"{cfg.db}"
+    assert conn.hostname == cfg.host
+    assert conn.port == cfg.port
+    assert conn.user == cfg.user
     assert conn.isolation_level == access.value
     assert isinstance(result, CompletedTransaction)
-    assert result.host == host
-    assert result.db == f"{test_db}"
-    assert result.port == port
-    assert result.user == user
+    assert result.host == cfg.host
+    assert result.db == f"{cfg.db}"
+    assert result.port == cfg.port
+    assert result.user == cfg.user
     assert result.access == access.name
     assert result.returncode == 0
     assert result.exception == ""

@@ -3,29 +3,27 @@
 default: check
 
 install:
-	pre-commit install
+	prek install
 	uv sync
 lock:
 	uv lock
 update:
 	uv sync --upgrade
+	prek auto-update
 
 check: pc lint test
 pc:
-	pre-commit run -a
+	prek run -a
 lint:
 	uv run ruff check .
 	uv run ruff format .
 	uv run mypy .
 	uv run pyright .
 test:
-	uv run pytest -m 'not online'
-
-# TODO: testcontainers
-integr:
-	docker compose -f docker-compose.firebird.yml up -d
 	uv run pytest
-	docker compose -f docker-compose.firebird.yml down
+
+unit:
+	uv run pytest -m 'not integr'
 
 doc:
 	uv run mkdocs serve
@@ -36,7 +34,7 @@ bumped:
 # make release TAG=$(git cliff --bumped-version)-alpha.0
 release: check
 	git cliff -o CHANGELOG.md --tag $(TAG)
-	pre-commit run --files CHANGELOG.md || pre-commit run --files CHANGELOG.md
+	prek run --files CHANGELOG.md || prek run --files CHANGELOG.md
 	git add CHANGELOG.md
 	git commit -m "chore(release): prepare for $(TAG)"
 	git push

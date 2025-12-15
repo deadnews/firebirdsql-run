@@ -34,19 +34,10 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ["3.12", "3.13"]
-        firebird-version: ["5"]
+        python-version: ["3.12", "3.13", "3.14"]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v6
-
-      - name: Setup firebird container
-        uses: juarezr/firebirdsql-github-action@0e61cbd19b478e5daa357d70039673f25234f379 # v2.0.1
-        with:
-          version: ${{ matrix.firebird-version }}
-          firebird_database: testdb.fdb
-          firebird_user: testuser
-          firebird_password: testpass
 
       - name: Install uv
         uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244 # v7.1.4
@@ -61,7 +52,7 @@ jobs:
         run: uv run pytest
 
       - name: Upload coverage to Codecov
-        if: matrix.os == 'ubuntu-latest' && matrix.firebird-version == '5' && matrix.python-version == '3.13'
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.14'
         uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5.5.1
 
   pypi-deploy:
@@ -102,11 +93,11 @@ jobs:
 
       - name: Create GitHub Release
         run: |
-          gh release create ${{ github.ref_name }} \
-            --title ${{ github.ref_name }} \
-            --notes="See [the CHANGELOG](${{ env.CHANGELOG }}) for more details." \
-            --draft=${{ env.PRERELEASE }} \
-            --prerelease=${{ env.PRERELEASE }}
+          gh release create ${GITHUB_REF_NAME} \
+            --title ${GITHUB_REF_NAME} \
+            --notes="See [the CHANGELOG](${CHANGELOG}) for more details." \
+            --draft=${PRERELEASE} \
+            --prerelease=${PRERELEASE}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
