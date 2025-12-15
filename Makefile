@@ -20,13 +20,10 @@ lint:
 	uv run mypy .
 	uv run pyright .
 test:
-	uv run pytest -m 'not online'
-
-# TODO: testcontainers
-integr:
-	docker compose -f compose.dev.yml up -d
 	uv run pytest
-	docker compose -f compose.dev.yml down
+
+unit:
+	uv run pytest -m 'not integr'
 
 doc:
 	uv run mkdocs serve
