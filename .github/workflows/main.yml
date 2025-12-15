@@ -35,7 +35,6 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         python-version: ["3.12", "3.13", "3.14"]
-        firebird-version: ["5"]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v6
@@ -53,7 +52,7 @@ jobs:
         run: uv run pytest
 
       - name: Upload coverage to Codecov
-        if: matrix.os == 'ubuntu-latest' && matrix.firebird-version == '5' && matrix.python-version == '3.14'
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.14'
         uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5.5.1
 
   pypi-deploy:
