@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.2.1](https://github.com/deadnews/firebirdsql-run/compare/v1.2.0...v1.2.1) - 2025-12-16
+
+### Testing
+
+- use `testcontainers` ([#228](https://github.com/deadnews/firebirdsql-run/issues/228)) - ([8e03832](https://github.com/deadnews/firebirdsql-run/commit/8e03832e0cf04a17d2898988df970083b4f59d68))
+
+### Chores
+
+- _(git-cliff)_ update config - ([4278fdc](https://github.com/deadnews/firebirdsql-run/commit/4278fdc619c241e00828fd48bba5c6e645ee9e95))
+- replace `mypy` and `pyright` with `ty` ([#229](https://github.com/deadnews/firebirdsql-run/issues/229)) - ([1941824](https://github.com/deadnews/firebirdsql-run/commit/194182411984f648236255004de805ed94abbf0f))
+
+### Dependencies
+
+- update dependency firebirdsql to v1.4.1 ([#223](https://github.com/deadnews/firebirdsql-run/issues/223)) - ([f7f510d](https://github.com/deadnews/firebirdsql-run/commit/f7f510dd830ef6fb44977a26932c86cd176c9295))
+
 ## [1.2.0](https://github.com/deadnews/firebirdsql-run/compare/v1.1.4...v1.2.0) - 2025-07-06
 
 ### Features
