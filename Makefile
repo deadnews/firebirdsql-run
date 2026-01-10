@@ -2,15 +2,6 @@
 
 default: check
 
-install:
-	prek install
-	uv sync
-lock:
-	uv lock
-update:
-	uv sync --upgrade
-	prek auto-update
-
 check: pc lint test
 pc:
 	prek run -a
@@ -23,6 +14,16 @@ test:
 
 unit:
 	uv run pytest -m 'not integr'
+
+install:
+	uv sync
+
+update: up up-ci
+up:
+	uv sync --upgrade
+up-ci:
+	prek auto-update
+	pinact run -update
 
 doc:
 	uv run mkdocs serve

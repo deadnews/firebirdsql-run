@@ -14,9 +14,7 @@
 ## Installation
 
 ```sh
-pip install firebirdsql-run
-# or
-poetry add firebirdsql-run
+uv add firebirdsql-run
 ```
 
 ## Examples
