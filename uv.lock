@@ -276,9 +276,9 @@ wheels = [
 
 [[package]]
 name = "firebirdsql"
-version = "1.4.1"
+version = "1.4.2"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/9d/1c/5613412d592d09c2daeb6e591fa110cdffe24aecff617b2b300360e3b51a/firebirdsql-1.4.1.tar.gz", hash = "sha256:4863b5497924c74fc213bcb91ce69647b42f33fdd24a199c62c22039423cb1d4", size = 90912, upload-time = "2025-09-27T01:42:22.863Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/e2/57/256bde4a2951467832e165bddbf6d9af2dcd70cccf2dc6211fd5a6ecf419/firebirdsql-1.4.2.tar.gz", hash = "sha256:5d5b38d0a614ec850f7b114f45b5997063e9b673b59e4c17df6cf954066836ce", size = 91479, upload-time = "2026-01-25T02:58:00.269Z" }
 
 [[package]]
 name = "firebirdsql-run"
@@ -306,7 +306,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "firebirdsql", specifier = "==1.4.1" },
+    { name = "firebirdsql", specifier = "==1.4.2" },
     { name = "passlib", specifier = ">=1.7.4" },
 ]
 
