@@ -60,6 +60,7 @@ ignore = [
   "FBT002",  # Boolean default value in function definition
   "ISC001",  # Checks for implicitly concatenated strings on a single line
   "PLR0913", # Too many arguments to function call
+  "PYI034",  # non-self-return-type
 ]
 
 [tool.ruff.lint.per-file-ignores]
@@ -77,20 +78,3 @@ exclude_lines = [
   "if __name__ == .__main__.:",
   "if TYPE_CHECKING:",
 ]
-
-[tool.mypy]
-disallow_untyped_defs  = true
-follow_imports         = "normal"
-ignore_missing_imports = true
-show_column_numbers    = true
-show_error_codes       = true
-warn_unused_ignores    = true
-
-[[tool.mypy.overrides]]
-module                = ["tests.*"]
-disallow_untyped_defs = false
-
-[tool.pyright]
-include          = ["src"]
-ignore           = ["tests"]
-typeCheckingMode = "standard"
