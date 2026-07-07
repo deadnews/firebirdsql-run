@@ -22,8 +22,8 @@ update: up up-ci
 up:
 	uv sync --upgrade
 up-ci:
-	prek auto-update
-	pinact run -update
+	prek update --freeze
+	pinact run --update
 
 doc:
 	uv run mkdocs serve
