@@ -22,7 +22,7 @@ update: up up-ci
 up:
 	uv sync --upgrade
 up-ci:
-	prek update --freeze
+	prek update
 	pinact run --update
 
 doc:
