@@ -87,5 +87,5 @@ plugins:
             show_symbol_type_toc: true
             signature_crossrefs: true
             summary: true
-          import:
+          inventories:
             - https://docs.python.org/3/objects.inv
