@@ -61,7 +61,7 @@ body = """
         (<REPO>/compare/{{ previous.version }}...{{ version }}) - {{ timestamp | date(format="%Y-%m-%d") }}
     {%- else -%}
         ## [{{ version | trim_start_matches(pat="v") }}]\
-        (<REPO>/commits/{{ version }}) - {{ timestamp | date(format="%Y-%m-%d") }}}
+        (<REPO>/commits/{{ version }}) - {{ timestamp | date(format="%Y-%m-%d") }}
     {%- endif -%}
 {%- else -%}
     ## [unreleased]
