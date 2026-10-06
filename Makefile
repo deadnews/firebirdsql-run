@@ -26,7 +26,7 @@ up-ci:
 	pinact run --update
 
 doc:
-	uv run mkdocs serve
+	uv run zensical serve
 
 bumped:
 	git cliff --bumped-version
