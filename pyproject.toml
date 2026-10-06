@@ -70,7 +70,7 @@ ignore = [
 "tests/*"     = ["ANN", "D", "E501", "PLC1901", "PLR2004", "S"]
 
 [tool.pytest.ini_options]
-addopts   = "--verbose --cov=./src --cov-report=term --cov-report=xml"
+addopts   = "--verbose --cov=./src --cov-report=term --cov-report=lcov"
 testpaths = ["tests"]
 markers   = ["integr: Run integration tests with Docker containers"]
 

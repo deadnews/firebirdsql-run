@@ -22,6 +22,8 @@ jobs:
 
   test:
     name: Tests
+    permissions:
+      contents: write
     strategy:
       fail-fast: false
       matrix:
@@ -43,9 +45,12 @@ jobs:
       - name: Run tests
         run: uv run pytest
 
-      - name: Upload coverage to Codecov
-        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.14'
-        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
+      - name: Upload coverage
+        uses: deadnews/coverage-badge-action@bc4aaf332f25c52d1e8dd21ef9ed0b2337ad39af # v1.0.0
+        if: github.event_name == 'push' && matrix.os == 'ubuntu-latest' && matrix.python-version == '3.14'
+        with:
+          file: coverage.lcov
+          type: lcov
 
   pypi-deploy:
     name: Release to PyPI

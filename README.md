@@ -6,7 +6,7 @@
 [![GitHub: Release](https://img.shields.io/github/v/release/deadnews/firebirdsql-run?logo=github&logoColor=white)](https://github.com/deadnews/firebirdsql-run/releases/latest)
 [![Documentation](https://img.shields.io/badge/documentation-gray.svg?logo=materialformkdocs&logoColor=white)](https://deadnews.github.io/firebirdsql-run)
 [![CI: Main](https://img.shields.io/github/actions/workflow/status/deadnews/firebirdsql-run/main.yml?branch=main&logo=github&logoColor=white&label=main)](https://github.com/deadnews/firebirdsql-run)
-[![CI: Coverage](https://img.shields.io/codecov/c/github/deadnews/firebirdsql-run?token=OCZDZIYPMC&logo=codecov&logoColor=white)](https://app.codecov.io/gh/deadnews/firebirdsql-run)
+[![CI: Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/deadnews/firebirdsql-run/refs/heads/badges/coverage.json)](https://github.com/deadnews/firebirdsql-run)
 
 **[Installation](#installation)** • **[Examples](#examples)** • **[Env Variables](#env-variables)**
 
