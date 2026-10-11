@@ -7,9 +7,9 @@ authors         = [{ name = "deadnews", email = "deadnewsgit@gmail.com" }]
 classifiers     = ["Operating System :: OS Independent", "Topic :: Database"]
 keywords        = ["firebird", "sql", "api"]
 dynamic         = ["version"]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 
-dependencies = ["firebirdsql==1.4.6", "passlib>=1.7.4"]
+dependencies = ["firebirdsql>=1.4.6", "passlib>=1.7.4"]
 
 [dependency-groups]
 dev = [
@@ -19,8 +19,8 @@ dev = [
   "pytest-cov>=6.1.0",
   "pytest-mock>=3.14.0",
   "testcontainers>=4.13.0",
-  "zensical>=0.0.68; python_version >= '3.11'",
-  "mkdocstrings>=0.29.1",
+  "zensical>=0.0.68",
+  "mkdocstrings>=1.0.7",
   "mkdocstrings-python>=1.16.10",
 ]
 
