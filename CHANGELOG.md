@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.2.2](https://github.com/deadnews/firebirdsql-run/compare/v1.2.1...v1.2.2) - 2026-10-11
+
+### Build
+
+- drop python 3.10 support, test on 3.15 - ([70caabe](https://github.com/deadnews/firebirdsql-run/commit/70caabe0f92246b47c9fa9340ea9e17672c33d10))
+- replace `mkdocs` with `zensical` - ([ea24500](https://github.com/deadnews/firebirdsql-run/commit/ea2450084733371252af9bb9e179586cac37c897))
+
+### Chores
+
+- _(make)_ add `alpha` target for pre-release tags - ([01aff35](https://github.com/deadnews/firebirdsql-run/commit/01aff356ed0bcdf8766765f6169713f55301c617))
+- _(prek)_ migrate to toml - ([d35024b](https://github.com/deadnews/firebirdsql-run/commit/d35024bbd54af3574d255ad45818aa487fb1db5b))
+- _(vscode)_ update inlay hints setting for python - ([b8f2aeb](https://github.com/deadnews/firebirdsql-run/commit/b8f2aeb74439225adc11b4a2bca149657dd65953))
+- replace `codecov` with `coverage-badge-action` - ([780fa83](https://github.com/deadnews/firebirdsql-run/commit/780fa834bfc78b12f3e6f1ced8d5e51e5217a9a1))
+- drop stale tooling leftovers, fix changelog link brace - ([b46a65e](https://github.com/deadnews/firebirdsql-run/commit/b46a65e18861ba8cfa8e8cf3e112198c1543f898))
+- replace `pre-commit` with `prek` - ([106adb0](https://github.com/deadnews/firebirdsql-run/commit/106adb0577070ded5483c1f690a3b96ca4e85376))
+
+### Dependencies
+
+- update deps - ([64d6ac9](https://github.com/deadnews/firebirdsql-run/commit/64d6ac9db99a0253deddaeff9fc2d69c4760a677))
+- update dependency firebirdsql to v1.4.6 ([#243](https://github.com/deadnews/firebirdsql-run/issues/243)) - ([013fcb2](https://github.com/deadnews/firebirdsql-run/commit/013fcb21c6151ac36b2f8659ab408a0c02fbda54))
+
 ## [1.2.1](https://github.com/deadnews/firebirdsql-run/compare/v1.2.0...v1.2.1) - 2025-12-16
 
 ### Testing
@@ -155,7 +176,7 @@
 - _(renovate)_ use shared config - ([4a83cc4](https://github.com/deadnews/firebirdsql-run/commit/4a83cc46b63fe1d75e5f95719f4f4bb652b3b5d8))
 - update `workflows` ([#64](https://github.com/deadnews/firebirdsql-run/issues/64)) - ([a437498](https://github.com/deadnews/firebirdsql-run/commit/a4374984035d5f77d20639d94a35e68dc4eeb152))
 
-## [1.0.2](https://github.com/deadnews/firebirdsql-run/commits/v1.0.2) - 2023-05-07}
+## [1.0.2](https://github.com/deadnews/firebirdsql-run/commits/v1.0.2) - 2023-05-07
 
 ### Features
 
